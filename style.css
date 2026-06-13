@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 400px;
+    height: 700px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+/* حاوية الـ 3D */
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* شريط العدادات المتلمع */
+#ui-bar {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 10;
+    pointer-events: none; /* عشان ميعطلش التاتش على اللعبة */
+}
+
+.stat-box {
+    background: linear-gradient(to bottom, #2b4b6b, #152a40);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #4a90e2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 2px black;
+}
+
+/* شاشة السؤال بتأثير Pop-up */
+#question-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 85%;
+    background: #fff;
+    border-radius: 20px;
+    z-index: 20;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-header {
+    background: linear-gradient(to right, #6a2c91, #9b59b6);
+    color: white;
+    padding: 15px;
+    font-size: 22px;
+    border-radius: 20px 20px 0 0;
+    font-weight: 900;
+    border-bottom: 4px solid #521c75;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: #2c3e50;
+}
+
+.ans-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.ans-btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 rgba(0,0,0,0.3);
+}
+
+.green { background: linear-gradient(to bottom, #4CAF50, #2E7D32); box-shadow: 0 6px 0 #1B5E20; }
+.blue { background: linear-gradient(to bottom, #2196F3, #1565C0); box-shadow: 0 6px 0 #0D47A1; }
+.yellow { background: linear-gradient(to bottom, #FFC107, #FF8F00); color: #333; box-shadow: 0 6px 0 #E65100; }
+.red { background: linear-gradient(to bottom, #F44336, #C62828); box-shadow: 0 6px 0 #B71C1C; }
